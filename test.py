@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/status", methods=["GET"])
 def alive() -> str:
-    '''
+    """
     This GET route checks the status of the API
 
     Returns
@@ -15,10 +15,9 @@ def alive() -> str:
     str
         Return the string "alive".
 
-    '''
-    
-    return "alive"
+    """
 
+    return "alive"
 
 
 @app.route(
@@ -26,9 +25,9 @@ def alive() -> str:
     methods=["GET"],
 )
 def user(month: str, customer_visiting_website: int, seller_available: str) -> int:
-    '''
+    """
     This GET route takes 3 parameters and returns a random number between 2000 and 5000.
-    
+
     Parameters
     ----------
     month : str
@@ -43,7 +42,7 @@ def user(month: str, customer_visiting_website: int, seller_available: str) -> i
     int
         Random number between 2000 and 5000.
 
-    '''
+    """
 
     random_num = random.randint(2000, 5000)
     random_num = str(random_num)
@@ -52,9 +51,9 @@ def user(month: str, customer_visiting_website: int, seller_available: str) -> i
 
 @app.route("/login", methods=["POST"])
 def login() -> str:
-    
-    '''
-    This POST route makes sure that username and password are correct. 
+
+    """
+    This POST route makes sure that username and password are correct.
     The request is sent using postman.
 
     Returns
@@ -62,13 +61,10 @@ def login() -> str:
     str
         Returns a string with the correct information .
 
-    '''
-    
-    #Dictionnary with the json request for username and password
-    body = {
-            'user' : request.json["username"],
-            'password' : request.json["password"] }
+    """
 
+    # Dictionnary with the json request for username and password
+    body = {"user": request.json["username"], "password": request.json["password"]}
 
     return f"Login success for user {body['user']} with password of length: {len(body['password'])}!!"
 
